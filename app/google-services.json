@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "107626386228",
+    "firebase_url": "https://appmonitoreoparche.firebaseio.com",
+    "project_id": "appmonitoreoparche",
+    "storage_bucket": "appmonitoreoparche.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:107626386228:android:8f7ead4f50cbd86c7b0b61",
+        "android_client_info": {
+          "package_name": "com.zamoraleo.appMonitoreoParche"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "107626386228-aftsvmq5s2mu2jv1cluo15kin7b5gjtt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zamoraleo.appMonitoreoParche",
+            "certificate_hash": "ffa55fbbad0be8e72a31be8a18e3653c3e30b2d6"
+          }
+        },
+        {
+          "client_id": "107626386228-8trhtafbpr9ig4cta4m3an38p8e47re0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQhFbRiTKEb8Y_8AkPYdu-wVb4Hg0OgiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "107626386228-8trhtafbpr9ig4cta4m3an38p8e47re0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

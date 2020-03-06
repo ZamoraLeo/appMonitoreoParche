@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/icAdd"
+        android:icon="@drawable/ic_add"
+        app:showAsAction="always"
+        android:title="agregar"/>
+
+    <item
+        android:id="@+id/icSave"
+        android:icon="@drawable/ic_save"
+        app:showAsAction="always"
+        android:title="actualizar"/>
+
+    <item
+        android:id="@+id/icDelete"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="always"
+        android:title="borrar"/>
+
+    <item
+        android:id="@+id/icLogout"
+        android:icon="@drawable/ic_logout"
+        app:showAsAction="always"
+        android:title="CerrarSesion"/>
+
+</menu>
