@@ -123,9 +123,12 @@ public class ListaActivity extends AppCompatActivity {
         txtApellidos.setText(personaSelected.getApellidos());
         txtEdad.setText(String.valueOf(personaSelected.getEdad()));
 
+        btnRegistro.setText(tit);
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View viewG) {
+                Persona p = new Persona();
+
                 final String pwd = txtPwd.getText().toString();
                 final String mail = txtEmail.getText().toString();
                 final String nombre = txtNombre.getText().toString();
@@ -154,15 +157,15 @@ public class ListaActivity extends AppCompatActivity {
                     txtPwd.setError("La contraseña debe tener minimo 8 Digitos, 1 letra Mayuscula y 1 Número");
                     txtPwd.requestFocus();
                 } else{
-                    Persona p = new Persona();
-                    p.setUid(UUID.randomUUID().toString());
-                    p.setNombre(nombre);
-                    p.setApellidos(apellidos);
-                    p.setCorreo(mail);
-                    p.setEdad(Integer.parseInt(edad));
-                    p.setPassword(pwd);
 
-                    //databaseReference.child("Persona").child(p.getUid()).setValue(p);
+                    p.setUid(personaSelected.getUid());
+                    p.setApellidos(txtApellidos.getText().toString().trim());
+                    p.setEdad(Integer.parseInt(txtEdad.getText().toString().trim()));
+                    p.setCorreo(txtEmail.getText().toString().trim());
+                    p.setPassword(txtPwd.getText().toString().trim());
+                    p.setNombre(txtNombre.getText().toString().trim());
+
+                    databaseReference.child("Persona").child(p.getUid()).setValue(p);
                     Toast.makeText(ListaActivity.this, "Se modificó correctamente", Toast.LENGTH_LONG).show();
                     dialog.dismiss();
                 }
@@ -257,6 +260,7 @@ public class ListaActivity extends AppCompatActivity {
 
         Titulo.setText(tit);
 
+        btnRegistro.setText(tit);
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -313,6 +317,12 @@ public class ListaActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthStateListener);
+    }
+
+    private void eliminar() {
+        Persona p = new Persona();
+        p.setUid(personaSelected.getUid());
+        databaseReference.child("Persona").child(p.getUid()).removeValue();
     }
 
     private static final Pattern PASSWORD_PATTERN =
