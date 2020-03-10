@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.example.appmonitoreoparche.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -92,7 +93,7 @@ public class ListaActivity extends AppCompatActivity {
     private void dialogoGuardar() {
         final EditText txtNombre, txtPwd, txtEmail, txtApellidos, txtEdad;
         TextView titulo;
-        Button btnRegistro;
+        Button btnRegistro, btnBorrar;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ListaActivity.this);
 
@@ -114,6 +115,7 @@ public class ListaActivity extends AppCompatActivity {
         titulo = viewG.findViewById(R.id.txtRegistro);
 
         btnRegistro = viewG.findViewById(R.id.btnRegistrar);
+        btnBorrar = viewG.findViewById(R.id.btnBorrar);
         tit = "Modificar";
 
         titulo.setText(tit);
@@ -171,6 +173,13 @@ public class ListaActivity extends AppCompatActivity {
                 }
             }
         });
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                eliminar();
+                dialog.dismiss();
+            }
+        });
     }
 
     private void listaDatos() {
@@ -220,11 +229,16 @@ public class ListaActivity extends AppCompatActivity {
             }
             break;
             case R.id.icAdd:{
-                dialogoRegistro();
+                onRegistrar();
             }
             break;
         }
         return true;
+    }
+
+    private void onRegistrar() {
+        Intent intent = new Intent(ListaActivity.this, RegistroActivity.class);
+        startActivity(intent);
     }
 
     private void cerrarSesion() {
@@ -233,6 +247,7 @@ public class ListaActivity extends AppCompatActivity {
 
     private void dialogoRegistro(){
         final EditText txtNombre, txtPwd, txtEmail, txtApellidos, txtEdad;
+        final TextInputLayout txtiNombre, txtiPwd, txtiEmail, txtiApellidos, txtiEdad;
         TextView Titulo;
 
         Button btnRegistro;
@@ -253,6 +268,13 @@ public class ListaActivity extends AppCompatActivity {
         txtEmail = view.findViewById(R.id.txtEmail);
         txtApellidos = view.findViewById(R.id.txtApellido);
         txtEdad = view.findViewById(R.id.txtEdad);
+
+        txtiNombre = view.findViewById(R.id.txtiNombre);
+        txtiPwd = view.findViewById(R.id.txtiPsw);
+        txtiEmail = view.findViewById(R.id.txtiEmail);
+        txtiApellidos = view.findViewById(R.id.txtiApellido);
+        txtiEdad = view.findViewById(R.id.txtiEdad);
+
         Titulo = view.findViewById(R.id.txtRegistro);
 
         btnRegistro = view.findViewById(R.id.btnRegistrar);
@@ -271,26 +293,26 @@ public class ListaActivity extends AppCompatActivity {
                 final String edad = txtEdad.getText().toString();
 
                 if(nombre.isEmpty()){
-                    txtNombre.setError("Pon tu Nombre");
-                    txtNombre.requestFocus();
+                    txtiNombre.setError("Pon tu Nombre");
+                    txtiNombre.requestFocus();
                 } else if(apellidos.isEmpty()){
-                    txtApellidos.setError("Pon tus Apellidos");
-                    txtApellidos.requestFocus();
+                    txtiApellidos.setError("Pon tus Apellidos");
+                    txtiApellidos.requestFocus();
                 } else if(mail.isEmpty()){
-                    txtEmail.setError("Pon un Correo");
-                    txtEmail.requestFocus();
+                    txtiEmail.setError("Pon un Correo");
+                    txtiEmail.requestFocus();
                 } else if(edad.isEmpty()){
-                    txtEdad.setError("Pon tu Edad");
-                    txtEdad.requestFocus();
+                    txtiEdad.setError("Pon tu Edad");
+                    txtiEdad.requestFocus();
                 } else if(!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
-                    txtEmail.setError("Pon un Correo Valido");
-                    txtEmail.requestFocus();
+                    txtiEmail.setError("Pon un Correo Valido");
+                    txtiEmail.requestFocus();
                 } else if(pwd.isEmpty()){
-                    txtPwd.setError("Pon una Contraseña");
-                    txtPwd.requestFocus();
+                    txtiPwd.setError("Pon una Contraseña");
+                    txtiPwd.requestFocus();
                 } else if(!PASSWORD_PATTERN.matcher(pwd).matches()){
-                    txtPwd.setError("La contraseña debe tener minimo 8 Digitos, 1 letra Mayuscula y 1 Número");
-                    txtPwd.requestFocus();
+                    txtiPwd.setError("La contraseña debe tener minimo 8 Digitos, 1 letra Mayuscula y 1 Número");
+                    txtiPwd.requestFocus();
                 } else{
                     Persona p = new Persona();
                     p.setUid(UUID.randomUUID().toString());

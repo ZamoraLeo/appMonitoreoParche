@@ -12,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.zamoraleo.appMonitoreoParche.ListaActivity"
-            android:label="@string/titulo"/>
+        <activity android:name="com.zamoraleo.appMonitoreoParche.RegistroActivity"></activity>
+        <activity
+            android:name="com.zamoraleo.appMonitoreoParche.ListaActivity"
+            android:label="@string/titulo" />
         <activity
             android:name="com.zamoraleo.appMonitoreoParche.MainActivity"
             android:label="@string/app_name"
